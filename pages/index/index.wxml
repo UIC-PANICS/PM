@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<image class="full-width-image" src="http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/59/3/thumb.jpg" />
+<view class="content padding">
+	<view class="h1">UICcds PM Illustration</view>
+  <view class="p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate massa ut felis sollicitudin, in imperdiet magna interdum. Pellentesque et erat bibendum, finibus diam ultricies, imperdiet est. Mauris eu ante nisi. Suspendisse et purus eleifend, sagittis mauris quis, mollis nisl. Nullam et sem malesuada, lobortis risus et, suscipit massa. Nullam lacinia volutpat massa fringilla venenatis. Aenean quis turpis eu ante euismod euismod. Morbi tristique viverra lacus rutrum mattis. Sed sed condimentum nulla. Proin blandit neque at libero maximus pellentesque. Maecenas luctus, ante facilisis lobortis porttitor, nisi eros elementum nibh, non sagittis justo eros sit amet diam. Sed et dui eu dui aliquam molestie in ac justo. Nullam lectus neque, laoreet id enim vel, auctor egestas justo. Sed ligula magna, dictum in nunc id, maximus suscipit justo. Sed sagittis libero ac arcu sodales iaculis.</view>
+</view>
+<view class="content">
+  <view class="imageContainer" wx:key="unique" wx:for="{{pm}}" bindtap="viewPerson">
+    <view class="list card ripple zoomInDown">
+      <view class="item">
+        <view class="h2">{{item.name}}</view>
+        <view class="p">{{item.nameE}}</view>
+      </view>
+      <view class="item item-image" id="{{item.jie}}">
+        <image class="photo" mode="widthFix" src="{{item.photo}}" data-index="{{index}}"></image>
+      </view>
+      <view class="item item-body">
+        <text>{{item.jie}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="content has-header">
+	<view class="list">
+		<view class="item">
+			<view class="input-label">
+				© UICcds 2017
+			</view>
+		</view>
+	</view>
+</view>

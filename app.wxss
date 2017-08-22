@@ -1,0 +1,14 @@
+/**app.wxss**/
+@import "wxParser/index.wxss";
+@import 'ionic.app.wxss';
+@import 'extend.wxss';
+@import 'ripples.min.wxss';
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}

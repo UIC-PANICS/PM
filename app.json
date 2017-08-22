@@ -1,0 +1,13 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/person/person"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#4AC6E3",
+    "navigationBarTitleText": "UICcds Peer Mentors Illustration",
+    "navigationBarTextStyle":"white"
+  }
+}
