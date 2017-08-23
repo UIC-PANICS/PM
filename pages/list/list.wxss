@@ -1,0 +1,16 @@
+/**list.wxss**/
+
+.full-width-image{
+  width: 100%;
+  max-height: 100%;
+}
+
+.right{
+  font-size: 13pt;
+  color: #576b95;
+  float: right;
+  vertical-align: middle;
+}
+.right:active{
+  opacity: 0.2;
+}

@@ -1,20 +1,23 @@
-//index.js
-//获取应用实例
+// index.js
 var app = getApp()
 Page({
   data: {
     tableID: 812,
     Limit: 28,
-    pm: [],
-    ph: []
   },
-  onLoad() {
-    this.fetchPMList()
+
+  onLoad: function (options) {
+
   },
-  fetchPMList() {
+
+  onShow: function (options) {
+    this.fetchRandomPM()
+  },
+  fetchRandomPM() {
     let that = this
     let limit = this.data.Limit
     let tableID = this.data.tableID
+    let i = Math.round(Math.random() * 27 );
     let objects = {
       tableID,
       limit
@@ -22,31 +25,29 @@ Page({
 
     wx.BaaS.getRecordList(objects).then((res) => {
       that.setData({
-        pm: res.data.objects
-      })
-      wx.setStorage({
-        key: 'PMList',
-        data: res.data.objects,
-        success: function(res){
-          // success
-        },
-        fail: function() {
-          // fail
-        },
-        complete: function() {
-          // complete
-        }
+        random: res.data.objects[i].id
       })
     }, (err) => {
       console.dir(err)
     });
   },
-  /*viewPerson: function () {
+  randomPM: function (event) {
+    var postId = event.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../person/person'
+      url: "../person/person?id=" + postId
+    })
+  },
+
+  viewPMList: function (event) {
+    wx.navigateTo({
+      url: "../list/list"
     })
 
+  },
+  viewPM: function (event) {
+    wx.navigateTo({
+      url: "../pm/pm"
+    })
 
-  }*/
-
+  }
 })
