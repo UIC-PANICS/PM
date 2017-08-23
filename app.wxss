@@ -1,5 +1,5 @@
 /**app.wxss**/
-@import 'wxParser/index.wxss';
+@import "wxParser/index.wxss";
 @import 'ionic.app.wxss';
 @import 'extend.wxss';
 @import 'ripples.min.wxss';
@@ -12,8 +12,3 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 }
-/*
-view{
-  border-style: solid;
-}
-*/

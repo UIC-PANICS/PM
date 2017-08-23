@@ -1,27 +1,4 @@
-<import src="../../wxParser/index.wxml" />
-<view class="pageContainer">
-  <view class="detailContainer">
-    <view class="">
-      <view class="nameContainer">
-        <view class="name">{{pm.name}}</view>
-        <view class="nameE">{{pm.nameE}}</view>
-      </view>
-      <view class="item item-image">
-        <image class="photo" mode="widthFix" src="{{pm.photo}}" data-index="{{index}}"></image>
-      </view>
-      <view class="item">
-        <view class="item item-body">
-          <view class="wxParser">
-            <template is="wxParser" data="{{wxParserData:richText.nodes}}" />
-          </view>
-        </view>
-      </view>
-      <view class="thumbNumber">
-        已有 {{pm.thumb}} 人点赞
-      </view>
-      <button class="thumb-up" data-number="{{thumb}}" bindtap="thumb">
-        <text class="tuText">为{{pm.name}}点赞</text>
-      </button>
-    </view>
-  </view>
+<import src="../../wxParser/index.wxml"/>
+<view class="wxParser">
+  <template is="wxParser" data="{{wxParserData:richText.nodes}}"/>
 </view>
