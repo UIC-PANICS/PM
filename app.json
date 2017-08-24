@@ -1,13 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/person/person"
+    "pages/person/person",
+    "pages/list/list",
+    "pages/pm/pm"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#4AC6E3",
-    "navigationBarTitleText": "UICcds Peer Mentors Illustration",
-    "navigationBarTextStyle":"white"
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#007c6c",
+    "navigationBarTitleText": "UICcds PM 图鉴",
+    "navigationBarTextStyle": "white"
   }
 }

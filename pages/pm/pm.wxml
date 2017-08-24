@@ -1,0 +1,10 @@
+<!--pm.wxml-->
+<view class="topContainer">
+  <view class="content padding">
+    <view class="h2">UICcds PM Illustration</view>
+    <view class="p">{{pm.content}}</view>
+  </view>
+</view>
+<view class="bottomContainer">
+  <view class="text">Copyright © UICCST 专业学会</view>
+</view>

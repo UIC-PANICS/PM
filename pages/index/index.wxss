@@ -1,6 +1,97 @@
-/**index.wxss**/
+/* index.wxss */
 
-.full-width-image{
-  width: 100%;
-  max-height: 100%;
+view {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pageContainer {
+  margin-bottom: 0px;
+}
+
+.topContainer {
+  height: 170px;
+  padding-top: 20px;
+}
+
+.logo {
+  position: relative;
+  height: 120px;
+  width: 400rpx;
+}
+
+.textA {
+  font-size: 17pt;
+}
+
+.textB {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #b2b2b2;
+  font-size: 14pt;
+}
+
+button{
+  font-size: 13pt;
+  text-align: center;
+  margin: 0 auto;
+  width: 600rpx;
+  height: 30pt;
+  line-height: 30pt;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.buttonA {
+  color: #fff;
+  background-color: rgb(9, 187, 7);
+  border-color: #04a602;
+}
+
+.buttonB {
+  color: #1aad19;
+  background-color: rgb(255, 255, 255);
+  border-color: #1aad19;
+}
+
+.buttonC {
+  color: #000;
+  background-color: rgb(255, 255, 255);
+  border-color: #ddd;
+}
+
+.buttonA:active {
+  background-color: rgba(9, 187, 7, 0.6);
+}
+
+.buttonB:active {
+  color: #fff;
+  background-color: #1aad19;
+}
+
+.buttonC:active {
+  background-color: rgba(200, 200, 200, 0.6);
+}
+
+.bottomContainer{
+  position: fixed;
+  bottom: 20px;
+  left: 75rpx;
+  width: 600rpx;
+  text-align: center;
+}
+
+.textC{
+  margin-top: 100px;
+  font-size: 13pt;
+  color: #576b95;
+}
+
+.textD{
+  margin: 10px;
+  font-size: 11pt;
+  color: #929292;
 }
