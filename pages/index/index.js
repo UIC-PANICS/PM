@@ -11,7 +11,10 @@ Page({
   },
 
   onShow: function (options) {
-    this.fetchRandomPM()
+    //this.fetchRandomPM()
+    this.setData({
+      random: Math.round(Math.random() * 27)
+    })
   },
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -27,24 +30,25 @@ Page({
       }
     }
   },
-  fetchRandomPM() {
-    let that = this
-    let limit = this.data.Limit
-    let tableID = this.data.tableID
-    let i = Math.round(Math.random() * 27 );
-    let objects = {
-      tableID,
-      limit
-    }
+  // fetchRandomPM() {
+  //   let that = this
+  //   let limit = this.data.Limit
+  //   let tableID = this.data.tableID
+  //   let i = Math.round(Math.random() * 27 );
+  //   let objects = {
+  //     tableID,
+  //     limit
+  //   }
 
-    wx.BaaS.getRecordList(objects).then((res) => {
-      that.setData({
-        random: res.data.objects[i].id
-      })
-    }, (err) => {
-      console.dir(err)
-    });
-  },
+  //   wx.BaaS.getRecordList(objects).then((res) => {
+  //     that.setData({
+  //       random: res.data.objects[i].id
+  //     })
+  //   }, (err) => {
+  //     console.dir(err)
+  //   });
+  // },
+
   randomPM: function (event) {
     var postId = event.currentTarget.dataset.id;
     wx.navigateTo({

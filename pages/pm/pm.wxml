@@ -2,7 +2,7 @@
 <view class="topContainer">
   <view class="content padding">
     <view class="h2">UICcds PM Illustration</view>
-    <view class="p">{{pm.content}}</view>
+    <view class="p">{{content}}</view>
   </view>
 </view>
 <view class="bottomContainer">

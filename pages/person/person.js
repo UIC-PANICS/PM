@@ -1,9 +1,9 @@
 let app = getApp()
 const wxParser = require('../../wxParser/index');
+var postsData = require('../../data/data.js')
 Page({
   data: {
     tableID: 812,
-    pmID: "",
     thumb: "",
     thumbJudge: "false",
   },
@@ -12,16 +12,22 @@ Page({
   onLoad: function (option) {
     var postID = option.id;
     this.setData({
-      pmID: postID
+      order: postID
     })
-    this.fetchPM()
-    this.thumbJudge()
-    wx.showLoading({
-      title: '加载中',
-    })
-    setTimeout(function () {
-      wx.hideLoading()
-    }, 500)
+    //this.fetchPM()
+    //this.thumbJudge()
+    // wx.showLoading({
+    //   title: '加载中',
+    //   duration: 500
+    // })
+    // setTimeout(function () {
+    //   wx.hideLoading()
+    // }, 500)
+    let recordID = this.data.order
+    this.setData({
+      pm: postsData.postList[recordID]
+    });
+    this.fetchJie()
   },
 
   onShareAppMessage: function (res) {
@@ -42,7 +48,7 @@ Page({
 
   fetchJie() {
     let that = this;
-    let html = this.data.jie;
+    let html = this.data.pm.jie;
     console.log(html)
     wxParser.parse({
       bind: 'richText',
@@ -59,123 +65,123 @@ Page({
     });
   },
 
-  fetchPM() {
-    let that = this
-    let tableID = this.data.tableID
-    let recordID = this.data.pmID
-    let objects = {
-      tableID,
-      recordID
-    }
+  // fetchPM() {
+  //   let that = this
+  //   let tableID = this.data.tableID
+  //   let recordID = this.data.pmID
+  //   let objects = {
+  //     tableID,
+  //     recordID
+  //   }
 
-    wx.BaaS.getRecordList(objects).then((res) => {
-      that.setData({
-        pm: res.data.objects[0],
-        jie: res.data.objects[0].jie,
-        thumb: res.data.objects[0].thumb
-      })
-      this.fetchJie()
-    }, (err) => {
-      console.dir(err)
-    })
-  },
+  //   wx.BaaS.getRecordList(objects).then((res) => {
+  //     that.setData({
+  //       pm: res.data.objects[0],
+  //       jie: res.data.objects[0].jie,
+  //       thumb: res.data.objects[0].thumb
+  //     })
+  //     this.fetchJie()
+  //   }, (err) => {
+  //     console.dir(err)
+  //   })
+  // },
 
   thumb: function (event) {
-    let that = this
-    let thumbJudge = this.data.thumbJudge
-    var thumbNumber = event.currentTarget.dataset.number;
-    this.setData({
-      thumb: thumbNumber
-    })
-    thumbNumber = thumbNumber + 1
-    if (thumbJudge == "false") {
-      this.setData({
-        thumb: thumbNumber
-      })
-      this.thumbUp()
+    // let that = this
+    // let thumbJudge = this.data.thumbJudge
+    // var thumbNumber = event.currentTarget.dataset.number;
+    // this.setData({
+    //   thumb: thumbNumber
+    // })
+    // thumbNumber = thumbNumber + 1
+    // if (thumbJudge == "false") {
+      // this.setData({
+      //   thumb: thumbNumber
+      // })
+      // this.thumbUp()
       wx.showToast({
-        title: '点赞成功',
-        icon: 'success',
+        title: '活动已结束',
+        image: '/images/info-icon.png',
         duration: 2000
       })
-      wx.setStorage({
-        key: this.data.pmID,
-        data: "true"
-      })
-      this.thumbJudge()
-    }
-    else {
-      wx.showModal({
-        title: '提示',
-        content: '你已经点过赞了',
-        cancelText: '取消点赞',
-        confirmText: '知道了',
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          } else if (res.cancel) {
-            that.thumbMinus()
-            console.log('用户点击取消')
-          }
-        }
-      })
+      // wx.setStorage({
+      //   key: this.data.pmID,
+      //   data: "true"
+      // })
+      //this.thumbJudge()
+    //}
+    // else {
+    //   wx.showModal({
+    //     title: '提示',
+    //     content: '你已经点过赞了',
+    //     cancelText: '取消点赞',
+    //     confirmText: '知道了',
+    //     success: function (res) {
+    //       if (res.confirm) {
+    //         console.log('用户点击确定')
+    //       } else if (res.cancel) {
+    //         that.thumbMinus()
+    //         console.log('用户点击取消')
+    //       }
+    //     }
+    //   })
 
-    }
+    // }
   },
-  thumbMinus() {
-    var thumbNumber = this.data.thumb;
-    thumbNumber = thumbNumber - 1
-    this.setData({
-      thumb: thumbNumber
-    })
-    this.thumbUp()
-    wx.showToast({
-      title: '已取消点赞',
-      icon: 'success',
-      duration: 2000
-    })
-    wx.setStorage({
-      key: this.data.pmID,
-      data: "false"
-    })
-    this.thumbJudge()
-  },
+  // thumbMinus() {
+  //   var thumbNumber = this.data.thumb;
+  //   thumbNumber = thumbNumber - 1
+  //   this.setData({
+  //     thumb: thumbNumber
+  //   })
+  //   this.thumbUp()
+  //   wx.showToast({
+  //     title: '已取消点赞',
+  //     icon: 'success',
+  //     duration: 2000
+  //   })
+  //   wx.setStorage({
+  //     key: this.data.pmID,
+  //     data: "false"
+  //   })
+  //   this.thumbJudge()
+  // },
 
-  thumbUp() {
-    let that = this
-    let tableID = this.data.tableID
-    let recordID = this.data.pmID
-    let thumb = this.data.thumb
-    let data = {
-      thumb: thumb
-    }
-    let objects = {
-      tableID,
-      recordID,
-      data
-    }
-    wx.BaaS.updateRecord(objects).then((res) => {
-      this.fetchPM()
-    }, (err) => {
-      console.dir(err)
-    });
-  },
+  // thumbUp() {
+  //   let that = this
+  //   let tableID = this.data.tableID
+  //   let recordID = this.data.pmID
+  //   let thumb = this.data.thumb
+  //   let data = {
+  //     thumb: thumb
+  //   }
+  //   let objects = {
+  //     tableID,
+  //     recordID,
+  //     data
+  //   }
+  //   wx.BaaS.updateRecord(objects).then((res) => {
+  //     this.fetchPM()
+  //   }, (err) => {
+  //     console.dir(err)
+  //   });
+  // },
 
-  thumbJudge() {
-    let that = this
-    wx.getStorage({
-      key: this.data.pmID,
-      success: function (res) {
-        that.setData({
-          thumbJudge: res.data
-        })
-      },
-      /*fail: function (res) {
-          that.setData({
-              thumbJudge: "false"
-          })
-      }*/
-    })
-  }
+  // thumbJudge() {
+  //   let that = this
+  //   wx.getStorage({
+  //     key: this.data.pmID,
+  //     success: function (res) {
+  //       that.setData({
+  //         thumbJudge: res.data
+  //       })
+  //     },
+  //     /*fail: function (res) {
+  //         that.setData({
+  //             thumbJudge: "false"
+  //         })
+  //     }*/
+  //   })
+  // }
 
 })
